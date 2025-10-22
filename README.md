@@ -2,12 +2,6 @@
 
 一个基于 [AstrBot](https://github.com/Astronmancer/astrbot) 的插件，用于获取随机的 Doro 表情包，并带有冷却限制，防止过于频繁调用 API。
 
-## 📦 插件信息
-
-- **名称**: doro
-- **描述**: 随机 doro 表情包
-- **版本**: 0.0.5
-
 ## ✨ 功能说明
 
 本插件注册了一个指令 `/doro`，用于从 [https://www.doro.asia/api/random-sticker](https://www.doro.asia/api/random-sticker) 获取一张随机的 Doro 表情包图片，并发送至聊天中。
