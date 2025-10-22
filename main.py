@@ -4,12 +4,14 @@ import traceback
 import asyncio
 
 import httpx
+import ssl
+import certifi
 from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
 from astrbot.api import AstrBotConfig
 
 
-@register("astrbot_plugin_doro", "shingetsu", "随机doro和cheshire表情包", "0.0.5")
+@register("astrbot_plugin_doro", "shingetsu", "随机doro和cheshire表情包", "0.0.6")
 class DoroCheshirePlugin(Star):
     """
     一个AstrBot插件，用于从API获取随机的Doro和Cheshire表情包。
@@ -72,7 +74,11 @@ class DoroCheshirePlugin(Star):
         # 2. 带有重试逻辑的API请求循环
         for attempt in range(self.max_retries):
             try:
-                async with httpx.AsyncClient() as client:
+                ssl_context = ssl.create_default_context(cafile=certifi.where())
+                ssl_context.check_hostname = False
+                ssl_context.verify_mode = ssl.CERT_NONE
+
+                async with httpx.AsyncClient(verify=ssl_context) as client:
                     response = await client.get(api_url)
                     response.raise_for_status()  # 对 4xx/5xx 响应抛出异常
                     data = response.json()

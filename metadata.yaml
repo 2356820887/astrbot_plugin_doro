@@ -1,5 +1,5 @@
 name: astrbot_plugin_doro # 这是你的插件的唯一识别名。
 desc: 随机doro表情包 # 插件简短描述
-version: 0.0.5 # 插件版本号。
+version: 0.0.6 # 插件版本号。
 author: Shingetsu # 作者
 repo: https://github.com/2356820887/astrbot_plugin_doro
